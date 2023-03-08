@@ -52,6 +52,10 @@ triggerService.start();
 
 triggerService.send("TRIGGER");
 
+// active node doesn't listen to TRIGGER event
+// the reuslt of onTransition console is active active
+triggerService.send("TRIGGER");
+
 function App() {
   return null;
 }

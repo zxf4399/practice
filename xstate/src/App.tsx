@@ -21,7 +21,11 @@ const triggerMachine = createMachine(
         exit: ["notifyInactive", "sendTelemetry"],
         on: {
           STOP: { target: "inactive" },
+          CLOSE: { target: "close" },
         },
+      },
+      close: {
+        type: "final",
       },
     },
   },
@@ -55,6 +59,8 @@ triggerService.send("TRIGGER");
 // active node doesn't listen to TRIGGER event
 // the reuslt of onTransition console is active active
 triggerService.send("TRIGGER");
+
+triggerService.send("CLOSE");
 
 function App() {
   return null;
